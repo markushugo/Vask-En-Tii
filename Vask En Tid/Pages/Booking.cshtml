@@ -17,6 +17,11 @@
         <input asp-for="NewBooking.BookingDate" class="form-control" />
         <span asp-validation-for="NewBooking.BookingDate" class="text-danger"></span>
     </div>
+    <div class="mb-3">
+        <label asp-for="NewBooking.IsBooked" class="form-label"></label>
+        <input asp-for="NewBooking.IsBooked" class="form-control" />
+        <span asp-validation-for="NewBooking.IsBooked" class="text-danger"></span>
+    </div>
     <button type="submit" class="btn btn-primary">Opret</button>
 </form>
 
@@ -27,23 +32,23 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Nummer</th>
-            <th>Lejligheds nr.</th>
-            <th>Handling</th>
+            <th>Booking tid</th>
+            <th>Booking dato</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var a in Model.Bookings)
         {
             <tr>
-                <td>@a.ApartmentId</td>
-                <td>@a.Number</td>
-                <td>@a.ApartmentCode</td>
+                <td>@a.BookingId</td>
+                <td>@a.BookingTime</td>
+                <td>@a.BookingDate</td>
+                <td>@a.IsBooked</td>
                 <td>
                     <form method="post" asp-page-handler="Delete" class="d-inline">
-                        <input type="hidden" name="apartmentId" value="@a.ApartmentId" />
+                        <input type="hidden" name="bookingId" value="@a.BookingId" />
                         <button type="submit" class="btn btn-danger btn-sm"
-                                onclick="return confirm('Slet lejlighed @a.Number (@a.ApartmentCode)?');">
+                                onclick="return confirm('Slet booking @a.BookingTime (@a.BookingDate, @a.IsBooked)?');">
                             Slet
                         </button>
                     </form>
