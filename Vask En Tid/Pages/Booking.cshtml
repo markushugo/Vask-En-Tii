@@ -1,5 +1,5 @@
 ﻿@page
-@model Vask_En_Tid.Pages.BookingModel
+@model Vask_En_Tid.Pages.BookingModel.CreateBooking
 @if (TempData["Msg"] is string m)
 {
     <div class="alert alert-info">@m</div>
@@ -13,16 +13,16 @@
         <span asp-validation-for="NewBooking.BookingTime" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="NewBooking.ApartmentCode" class="form-label"></label>
-        <input asp-for="NewBooking.ApartmentCode" class="form-control" />
-        <span asp-validation-for="NewBooking.ApartmentCode" class="text-danger"></span>
+        <label asp-for="NewBooking.BookingDate" class="form-label"></label>
+        <input asp-for="NewBooking.BookingDate" class="form-control" />
+        <span asp-validation-for="NewBooking.BookingDate" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Opret</button>
 </form>
 
 <hr />
 
-<h3>Eksisterende lejligheder</h3>
+<h3>Eksisterende bookinger</h3>
 <table class="table table-striped">
     <thead>
         <tr>

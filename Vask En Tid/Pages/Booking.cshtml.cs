@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Vask_En_Tid_Library.IRepos;
 using Vask_En_Tid_Library.Models;
+using Microsoft.Extensions.Logging;
 
 namespace Vask_En_Tid.Pages
 {
