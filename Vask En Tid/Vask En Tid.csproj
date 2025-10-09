@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Vask_En_Tid</RootNamespace>
+    <UserSecretsId>cef4de78-cb3b-45b2-842d-278687f90bd0</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Vask En Tid Library">
+      <HintPath>..\..\..\..\OneDrive\Skrivebord\Library\Vask En Tid Library\bin\Debug\net8.0\Vask En Tid Library.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

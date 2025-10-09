@@ -1,0 +1,63 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+@if (TempData["Msg"] is string m)
+{
+    <div class="alert alert-info">@m</div>
+}
+
+<h2>Opret tenant</h2>
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="NewTenant.FirstName" class="form-label"></label>
+        <input asp-for="NewTenant.FirstName" class="form-control" />
+        <span asp-validation-for="NewTenant.FirstName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="NewTenant.LastName" class="form-label"></label>
+        <input asp-for="NewTenant.LastName" class="form-control" />
+        <span asp-validation-for="NewTenant.LastName" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Opret</button>
+</form>
+
+<hr />
+
+<h3>Eksisterende tenants</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Fornavn</th>
+            <th>Efternavn</th>
+            <th>Handling</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model.Tenants)
+        {
+            <tr>
+                <td>@t.TenantID</td>
+                <td>@t.FirstName</td>
+                <td>@t.LastName</td>
+                <td>
+                    <form method="post" asp-page-handler="Delete" class="d-inline">
+                        <input type="hidden" name="tenantId" value="@t.TenantID" />
+                        <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Slet @t.FirstName @t.LastName?');">
+                            Slet
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
