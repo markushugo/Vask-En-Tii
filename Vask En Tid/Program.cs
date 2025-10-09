@@ -12,6 +12,9 @@ builder.Services.AddScoped<ITenantRepo>(
 builder.Services.AddScoped<IApartmentRepo>(
     _ => new ApartmentRepo(builder.Configuration.GetConnectionString("Default")!)
 );
+builder.Services.AddScoped<IBookingRepo>(
+    _ => new BookingRepo(builder.Configuration.GetConnectionString("Default")!)
+);
 
 
 

@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <Reference Include="Vask En Tid Library">
-      <HintPath>..\..\..\..\OneDrive\Skrivebord\Library\Vask En Tid Library\bin\Debug\net8.0\Vask En Tid Library.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Library\Vask En Tid Library\Vask En Tid Library\bin\Debug\net8.0\Vask En Tid Library.dll</HintPath>
     </Reference>
   </ItemGroup>
 
