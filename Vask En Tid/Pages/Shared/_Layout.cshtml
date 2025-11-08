@@ -1,15 +1,17 @@
-﻿<!DOCTYPE html>
+﻿@* Pages/_Layout.cshtml *@
+<!DOCTYPE html>
 <html lang="da">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"] · Vask En Tid</title>
-    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
     <header class="nav">
         <div class="container nav__inner">
-            <a class="brand" href="/">
+            <!-- logo / hjem -->
+            <a class="brand" asp-page="/Index">
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                     <rect x="3" y="2" width="18" height="20" rx="3" />
                     <circle cx="12" cy="12" r="5.5" />
@@ -19,16 +21,17 @@
                 <span>Vask En Tid</span>
             </a>
 
-       
             <input id="nav-toggle" type="checkbox" class="nav__toggle" aria-label="Åbn menu" />
-            <label for="nav-toggle" class="nav__burger" aria-hidden="true"><span></span><span></span><span></span></label>
+            <label for="nav-toggle" class="nav__burger" aria-hidden="true">
+                <span></span><span></span><span></span>
+            </label>
 
             <nav class="nav__links" aria-label="Primær navigation">
-                <a asp-page="/Booking">Booking</a>
-                <a asp-page="/CreateApartment">Lejlighed</a>
-                <a href="/#mine">Mine tider</a>
-                <a href="/#regler">Regler</a>
-                <a href="/#kontakt">Kontakt</a>
+                <!-- disse 3 sider har du i din Pages-mappe -->
+                <a asp-page="/Bookings">Booking</a>
+                <a asp-page="/BookingOverview">Bookinger</a>
+                <a asp-page="/Tenants">Beboere</a>
+             
             </nav>
 
             <a class="btn btn--primary nav__cta" href="#">Log ind</a>

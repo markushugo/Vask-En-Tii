@@ -1,0 +1,27 @@
+﻿@page
+@model Vask_En_Tid.Pages.TenantsModel
+@{
+}
+<h2>Opret beboer</h2>
+
+<form method="post">
+    <div>
+        <label asp-for="Tenant.FirstName"></label>
+        <input asp-for="Tenant.FirstName" />
+    </div>
+    <div>
+        <label asp-for="Tenant.LastName"></label>
+        <input asp-for="Tenant.LastName" />
+    </div>
+    <div>
+        <label>Lejlighed</label>
+        <select asp-for="Tenant.ApartmentId"
+                asp-items="@(new SelectList(Model.Apartments, "ApartmentId", "ApartmentCode"))">
+            <option value="">-- vælg --</option>
+        </select>
+    </div>
+
+    <span asp-validation-summary="All" class="text-danger"></span>
+
+    <button type="submit">Gem</button>
+</form>

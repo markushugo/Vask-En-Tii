@@ -2,3 +2,33 @@
 @model Vask_En_Tid.Pages.BookingOverviewModel
 @{
 }
+<h2>Bookinger</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Dato</th>
+            <th>Tidsrum</th>
+            <th>Maskine</th>
+            <th>Beboer</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var b in Model.Bookings)
+        {
+            <tr>
+                <td>@b.BookingDate.ToShortDateString()</td>
+                <td>@b.TimeslotId</td>
+                <td>@b.MachineId</td>
+                <td>@b.TenantId</td>
+                <td>
+                    <form method="post" asp-page="Cancel">
+                        <input type="hidden" name="id" value="@b.BookingId" />
+                        <button type="submit">Aflys</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

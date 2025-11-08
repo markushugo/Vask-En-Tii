@@ -1,24 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Vask_En_Tid_Library.Models;
 using Vask_En_Tid_Library.Services;
 
 namespace Vask_En_Tid.Pages
 {
-    public class BookingOverviewModel : PageModel
+    public class CancelModel : PageModel
     {
         private readonly BookingService _bookingService;
 
-        public List<Booking> Bookings { get; set; }
-
-        public BookingOverviewModel(BookingService bookingService)
+        public CancelModel(BookingService bookingService)
         {
             _bookingService = bookingService;
         }
 
-        public void OnGet()
+       
+        public IActionResult OnPost(int id)
         {
-            Bookings = _bookingService.GetAll();
+            _bookingService.DeleteBooking(id);
+            return RedirectToPage("/BookingOverview");
         }
     }
 }

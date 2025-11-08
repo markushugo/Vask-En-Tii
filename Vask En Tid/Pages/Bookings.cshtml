@@ -1,0 +1,40 @@
+﻿@page
+@model Vask_En_Tid.Pages.BookingsModel
+@{
+}
+<h2>Opret booking</h2>
+
+<form method="post">
+    <div>
+        <label>Beboer</label>
+        <select asp-for="NewBooking.TenantId"
+                asp-items="@(new SelectList(Model.Tenants, "TenantID", "FirstName"))">
+            <option value="">-- vælg --</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Maskine</label>
+        <select asp-for="NewBooking.MachineId"
+                asp-items="@(new SelectList(Model.Units, "MachineId", "MachineType"))">
+            <option value="">-- vælg --</option>
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="NewBooking.BookingDate">Dato</label>
+        <input asp-for="NewBooking.BookingDate" type="date" />
+    </div>
+
+    <div>
+        <label>Tidsrum</label>
+        <select asp-for="NewBooking.TimeslotId"
+                asp-items="@(new SelectList(Model.Timeslots, "TimeslotId", "SlotName"))">
+            <option value="">-- vælg --</option>
+        </select>
+    </div>
+
+    <span asp-validation-summary="All" class="text-danger"></span>
+
+    <button type="submit">Book</button>
+</form>
