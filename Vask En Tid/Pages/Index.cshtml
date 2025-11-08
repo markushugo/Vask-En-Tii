@@ -9,3 +9,39 @@
 {
     <div class="alert alert-info">@m</div>
 }
+<section class="hero">
+    <div class="hero__content">
+        <h1>Vaskekælderen i Tusindfryd</h1>
+        <p>Book vaskemaskiner, tørretumblere og rullemaskinen – uden konflikter.</p>
+        <div class="hero__actions">
+            <a class="btn btn--primary" asp-page="/Bookings">Book en tid</a>
+            <a class="btn btn--ghost" asp-page="/BookingOverview">Se dagens bookinger</a>
+        </div>
+    </div>
+    <div class="hero__panel">
+        <h2>Næste skridt</h2>
+        <ul class="list">
+            <li>1. Opret dig som beboer</li>
+            <li>2. Vælg maskine og tidsrum</li>
+            <li>3. Mød op til tiden 🧺</li>
+        </ul>
+    </div>
+</section>
+
+<section class="cards">
+    <article class="card">
+        <h3>Opret booking</h3>
+        <p>Vælg dato, maskine og tidsblok. Systemet sørger for at ingen dobbeltbooker.</p>
+        <a asp-page="/Bookings" class="card__link">Gå til booking →</a>
+    </article>
+    <article class="card">
+        <h3>Se bookinger</h3>
+        <p>Få overblik over hvem der bruger hvad – og hvornår der er ledigt.</p>
+        <a asp-page="/BookingOverview" class="card__link">Se oversigt →</a>
+    </article>
+    <article class="card">
+        <h3>Beboere</h3>
+        <p>Opret nye beboere med navn og lejlighedsnummer.</p>
+        <a asp-page="/Tenants" class="card__link">Opret beboer →</a>
+    </article>
+</section>

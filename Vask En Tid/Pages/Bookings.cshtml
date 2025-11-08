@@ -1,40 +1,50 @@
 ﻿@page
 @model Vask_En_Tid.Pages.BookingsModel
-@{
-}
-<h2>Opret booking</h2>
 
-<form method="post">
+<div class="form-card">
     <div>
-        <label>Beboer</label>
-        <select asp-for="NewBooking.TenantId"
-                asp-items="@(new SelectList(Model.Tenants, "TenantID", "FirstName"))">
-            <option value="">-- vælg --</option>
-        </select>
+        <h2 class="form-title">Opret booking</h2>
+        <p class="muted" style="margin:0;">Vælg beboer, maskine, dato og tidsrum for at oprette en booking.</p>
     </div>
 
-    <div>
-        <label>Maskine</label>
-        <select asp-for="NewBooking.MachineId"
-                asp-items="@(new SelectList(Model.Units, "MachineId", "MachineType"))">
-            <option value="">-- vælg --</option>
-        </select>
-    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
 
-    <div>
-        <label asp-for="NewBooking.BookingDate">Dato</label>
-        <input asp-for="NewBooking.BookingDate" type="date" />
-    </div>
+    <form method="post">
+        <div class="form-row">
+            <label asp-for="NewBooking.TenantId">Beboer</label>
+            <select asp-for="NewBooking.TenantId"
+                    asp-items="@(Model?.Tenants != null
+                                        ? new SelectList(Model.Tenants, "TenantID", "FirstName")
+                                        : new SelectList(Enumerable.Empty<object>(), "TenantID", "FirstName"))">
+                <option value="">-- vælg --</option>
+            </select>
+        </div>
 
-    <div>
-        <label>Tidsrum</label>
-        <select asp-for="NewBooking.TimeslotId"
-                asp-items="@(new SelectList(Model.Timeslots, "TimeslotId", "SlotName"))">
-            <option value="">-- vælg --</option>
-        </select>
-    </div>
+        <div class="form-row">
+            <label asp-for="NewBooking.MachineId">Maskine</label>
+            <select asp-for="NewBooking.MachineId"
+                    asp-items="@(Model?.Units != null
+                                ? new SelectList(Model.Units.Where(u => u != null), "MachineId", "MachineType")
+                                : new SelectList(Enumerable.Empty<Unit>(), "MachineId", "MachineType"))">
+                <option value="">-- vælg --</option>
+            </select>
+        </div>
 
-    <span asp-validation-summary="All" class="text-danger"></span>
+        <div class="form-row">
+            <label asp-for="NewBooking.BookingDate">Dato</label>
+            <input asp-for="NewBooking.BookingDate" type="date" value="@Model.NewBooking.BookingDate.ToString("yyyy-MM-dd")" />
+        </div>
 
-    <button type="submit">Book</button>
-</form>
+        <div class="form-row">
+            <label asp-for="NewBooking.TimeslotId">Tidsrum</label>
+            <select asp-for="NewBooking.TimeslotId"
+                    asp-items="@(Model?.Timeslots != null
+                                            ? new SelectList(Model.Timeslots, "TimeslotId", "SlotName")
+                                            : new SelectList(Enumerable.Empty<object>(), "TimeslotId", "SlotName"))">
+                <option value="">-- vælg --</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn-inline">Book</button>
+    </form>
+</div>

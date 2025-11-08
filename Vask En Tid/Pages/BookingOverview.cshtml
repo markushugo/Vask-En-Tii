@@ -1,34 +1,43 @@
 ﻿@page
 @model Vask_En_Tid.Pages.BookingOverviewModel
 @{
+    ViewData["Title"] = "Bookingoversigt";
 }
-<h2>Bookinger</h2>
 
-<table>
+<h2>Bookingoversigt</h2>
+
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Dato</th>
             <th>Tidsrum</th>
             <th>Maskine</th>
             <th>Beboer</th>
+            <th>Lejlighed</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var b in Model.Bookings)
-        {
-            <tr>
-                <td>@b.BookingDate.ToShortDateString()</td>
-                <td>@b.TimeslotId</td>
-                <td>@b.MachineId</td>
-                <td>@b.TenantId</td>
-                <td>
-                    <form method="post" asp-page="Cancel">
-                        <input type="hidden" name="id" value="@b.BookingId" />
-                        <button type="submit">Aflys</button>
-                    </form>
-                </td>
-            </tr>
-        }
+{
+    <tr>
+        <td>@b.BookingDate.ToShortDateString()</td>
+                <td>@b.Timeslot?.SlotName</td>  @b.TimeslotId 
+        <td>
+            @**@
+            @b.MachineName
+            @**@
+            @**@
+        </td>
+        <td>@($"{b.Tenant.FirstName} {b.Tenant.LastName}")</td>
+        <td>@($"{b.Apartment.Number}.{b.Apartment.ApartmentCode}")</td>
+        <td>
+            <form method="post" asp-page="Cancel">
+                <input type="hidden" name="id" value="@b.BookingId" />
+                <button type="submit" class="btn btn-danger btn-sm">Aflys</button>
+            </form>
+        </td>
+    </tr>
+}
     </tbody>
 </table>

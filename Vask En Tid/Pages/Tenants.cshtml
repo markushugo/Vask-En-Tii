@@ -1,27 +1,36 @@
 ﻿@page
 @model Vask_En_Tid.Pages.TenantsModel
 @{
+    ViewData["Title"] = "Opret beboer";
 }
-<h2>Opret beboer</h2>
 
-<form method="post">
+<div class="form-card">
     <div>
-        <label asp-for="Tenant.FirstName"></label>
-        <input asp-for="Tenant.FirstName" />
-    </div>
-    <div>
-        <label asp-for="Tenant.LastName"></label>
-        <input asp-for="Tenant.LastName" />
-    </div>
-    <div>
-        <label>Lejlighed</label>
-        <select asp-for="Tenant.ApartmentId"
-                asp-items="@(new SelectList(Model.Apartments, "ApartmentId", "ApartmentCode"))">
-            <option value="">-- vælg --</option>
-        </select>
+        <h2 class="form-title">Opret beboer</h2>
+        <p class="muted" style="margin:0;">Registrér navn og lejlighed.</p>
     </div>
 
-    <span asp-validation-summary="All" class="text-danger"></span>
+    <form method="post">
+        <div class="form-row">
+            <label asp-for="Tenant.FirstName">Fornavn</label>
+            <input asp-for="Tenant.FirstName" class="input-text" />
+            <span asp-validation-for="Tenant.FirstName" class="text-danger"></span>
+        </div>
 
-    <button type="submit">Gem</button>
-</form>
+        <div class="form-row">
+            <label asp-for="Tenant.LastName">Efternavn</label>
+            <input asp-for="Tenant.LastName" class="input-text" />
+            <span asp-validation-for="Tenant.LastName" class="text-danger"></span>
+        </div>
+
+        <div class="form-row">
+            <label>Lejlighed</label>
+            <select asp-for="Tenant.ApartmentId"
+                    asp-items="@(new SelectList(Model.Apartments, "ApartmentId", "ApartmentCode"))">
+                <option value="">-- vælg --</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn-inline">Gem</button>
+    </form>
+</div>
