@@ -254,9 +254,10 @@ tbody tr:nth-child(even) {
     }
 
     .nav {
-        display: none; 
+        display: none;
     }
 }
+
 .form-card {
     background: #fff;
     border-radius: .9rem;
@@ -309,6 +310,7 @@ input[type="date"] {
     width: fit-content;
     padding-inline: 1.2rem;
 }
+
 table {
     width: 100%;
     border-collapse: collapse;

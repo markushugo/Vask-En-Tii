@@ -2,6 +2,9 @@ using Vask_En_Tid_Library.IRepos;
 using Vask_En_Tid_Library.Repos;
 using Vask_En_Tid_Library.Services;
 
+/// <summary>
+/// Initializes a new instance of the <see cref="$Program" /> class.
+/// </summary>
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();

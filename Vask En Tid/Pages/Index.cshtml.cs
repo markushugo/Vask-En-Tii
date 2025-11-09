@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Vask_En_Tid_Library.IRepos;
-using Vask_En_Tid_Library.Models;
-using Microsoft.Extensions.Logging;
-using Vask_En_Tid_Library;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+
 namespace Vask_En_Tid.Pages
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.RazorPages.PageModel" />
     public class IndexModel : PageModel
     {
+        /// <summary>
+        /// Called when [get].
+        /// </summary>
         public void OnGet()
         {
         }
