@@ -46,13 +46,13 @@ namespace Vask_En_Tid.Pages
             _unitService = unitService;
             _tenantService = tenantService;
 
-            // Sikrer at NewBooking aldrig er null
+           
             NewBooking = new Booking
             {
                 BookingDate = DateTime.Today
             };
 
-            // Sikrer at lister ikke er null ved første load
+            
             Timeslots = new List<Timeslot>();
             Units = new List<Unit>();
             Tenants = new List<Tenant>();
@@ -108,7 +108,7 @@ namespace Vask_En_Tid.Pages
             if (!ModelState.IsValid)
                 return Page();
 
-            // Sikrer at datoen altid er gyldig
+            
             if (NewBooking.BookingDate < new DateTime(1753, 1, 1))
                 NewBooking.BookingDate = DateTime.Today;
 
